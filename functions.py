@@ -204,3 +204,15 @@ def Richards_ln_diff(t, A, K, r, gamma, nu):
     denom = A * nu * (factor1+1)**(1/nu) * ((factor1+1)**(1/nu))**2 - A * nu * ((factor1+1)**(1/nu))**2 + K * nu * ((factor1+1)**(1/nu))**2
     f = numerator/denom
     return f
+
+#output name for export file
+def create_file(fname, format):
+    return fname + format
+
+#check correct format of input files
+def check_file(file_name, f):
+    #file_name = list(file.keys())[0]
+    if file_name.split('.')[1] == f:
+        return True
+    else:
+        return False
