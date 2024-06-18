@@ -4,7 +4,7 @@ import pandas as pd
 from functions import text_to_sample, sample_to_wells
 
 ###FUNCTION TO CREATE DATA DICTS###
-def create_data_dicts(dataset_dictionary, sample_info_file_name):
+def create_data_dicts(datasets_dictionary, sample_info_file_name):
     #Assigning new paths to each data file and assigning
     #the corresponding data structure for further analysis
     DF_def = {}
