@@ -54,10 +54,16 @@ def create_data_dicts(datasets_dictionary, sample_info_file_name):
             blanks_def.update({sample_name : wells_temp})
         else:
             samples_def.update({sample_name : wells_temp})
-
+            
+    #definition of wells without blanks
+    wells_def_wo_blank = []
+    for s in samples_def:
+        for w in samples_def[s]:
+            wells_def_wo_blank.append(w)
+            
     print('\nSamples:\n')
     print(*samples_def.items(), sep='\n')
     print('\nBlanks:\n')
     print(*blanks_def.items(), sep='\n')
 
-    return time, bouts, DF_def, sample_names, samples_def, blanks_def, wells_def
+    return time, bouts, DF_def, sample_names, samples_def, blanks_def, wells_def, wells_def_wo_blank
