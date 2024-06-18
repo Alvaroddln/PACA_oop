@@ -4,31 +4,17 @@ import pandas as pd
 from functions import text_to_sample, sample_to_wells
 
 ###FUNCTION TO CREATE DATA DICTS###
-def create_data_dicts(dataset_folder_value):
-    #Creating new path with the selected folder and getting the names of the data files
-    path = os.getcwd()
-    new_path = path + '\\' + dataset_folder_value
-    files = os.listdir(new_path)
-    datasets_dict = {}
-    for file in files:
-        if 'SAMPLES' in file:
-            samples_file = file
-        else:
-            f = file.replace('.','_')
-            f = f.split('_')
-            dataset_name = f[-2]
-            datasets_dict.update({dataset_name : file})
-
+def create_data_dicts(dataset_dictionary, sample_info_file_name):
     #Assigning new paths to each data file and assigning
     #the corresponding data structure for further analysis
     DF_def = {}
-    dfs_raw_names = list(datasets_dict)
+    dfs_raw_names = list(datasets_dictionary)
 
-    for dataset in datasets_dict:
-        dataset_path = new_path + '/' + datasets_dict[dataset]
+    for dataset in datasets_dictionary:
+        dataset_path = '/content' + '/' + datasets_dictionary[dataset]
         DF_def[dataset] = pd.read_csv(dataset_path, index_col=0)
 
-    samples_path = new_path + '\\' + samples_file
+    samples_path = '/content' + '/' + sample_info_file_name
     f = open(samples_path, 'r')
     lines = f.readlines()
     f.close()
